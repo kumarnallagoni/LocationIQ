@@ -45,6 +45,7 @@ $output = json_decode($geocodeFromAddr);
 //echo'<pre>';print_r($output[0]);
 //Get latitude and longitute from json data
 //$data['latitude'] = $output[0]; 
+$data['address1'] = $output[0]->display_name;
 $data['latitude']=  $output[0]->lat;
 $data['longitude'] = $output[0]->lon;
 //Return latitude and longitude of the given address
@@ -61,6 +62,8 @@ $address = $_POST['address'];
 $latLong = getLatLong($address);
 $latitude = $latLong['latitude']?$latLong['latitude']:'Not found';
 $longitude = $latLong['longitude']?$latLong['longitude']:'Not found';
+$address1 =  $latLong['address1']?$latLong['address1']:'Not found';
+echo "Address:".$address1."<br>";
 echo "Latitude:".$latitude."<br>";
 echo "longitude:".$longitude."";
 }
